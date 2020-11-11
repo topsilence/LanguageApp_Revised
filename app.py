@@ -17,16 +17,19 @@ def index():
 def main():
     return render_template("main.html")
 
-@app.route("/test")
+@app.route("/scene_1")
 def scene_1():
     # flasktest.dbに接続します
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
-    word_infos = c.fetchall
-    for row in c.execute('SELECT english, japanese, pronunciation from greetings ORDER BY id'):
-        print(str(row[0]), row[1], row[2])
+    word_info = []
+    c.execute('SELECT english, japanese, pronunciation from greetings ORDER BY id')
+    for row in c.fetchall():
+        word_info.append({"english":row[0],"japanese":row[1],"pronunciation":row[2]})
+        # print(str(row[0]), row[1], row[2])
     c.close()
-    return render_template("test.html", word_info = row)
+    print(word_info)
+    return render_template("scene_1.html", html_word_info = word_info)
 
 @app.route("/scene_2")
 def scene_2():
