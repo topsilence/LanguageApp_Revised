@@ -13,11 +13,11 @@
     </header>
 
     <article>
-        {% for word_info in word_infos %}
+        {% for item in html_word_info %}
    
         <ul class="menu">
             <li class="menu__item">
-                <a class="menu__item__link js-menu__item__link" href="">{{word_info[0]}}</a>
+                <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
                 <ul class="submenu">
                     <li class="submenu__item">
                         <input id="btn" type="button" value="talk">
@@ -25,7 +25,7 @@
                           const btn = document.getElementById("btn");     // ボタンの取得
                           btn.addEventListener("click", () => {           // ボタンがクリックされたら
                             const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
-                            synth.text   = "{{word_info[1]}}"; // 話す内容
+                            synth.text   = "{{item["japanese"]}}"; // 話す内容
                             synth.lang   = "ja-JP";   // 言語
                             synth.rate   = 0.7;       // 速さ
                             synth.pitch  = 1.0;       // 高さ
@@ -33,8 +33,8 @@
                             window.speechSynthesis.speak(synth);          // 話す
                           });
                         </script>
-                        <p>{{word_info[1]}}</p>
-                        <p>{{word_info[2]}}</p>
+                        <p>{{item["japanese"]}}</p>
+                        <p>{{item["pronunciation"]}}</p>
                     </li>
 
                 </ul>
