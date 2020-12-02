@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+html {
+    overflow-y: scroll;
+    /* IEへの対応 http://www.htmq.com/style/overflow-y.shtml */
+    /*Internet Explorerが独自に追加したプロパティ*/
+    /*画面に収まりきれなかったときにスクロールして表示することを許可するか否か*/
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: #d3e9ff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+    min-width: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    outline: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    border: 0px;
+    vertical-align: bottom;
+}
+
+body {
+    font-family: "Noto Sans Japanese", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", "Meiryo", "HGPｺﾞｼｯｸM", "Osaka", "ＭＳ Ｐゴシック", sans-serif, Century Gothic, Arial;
+}
+
+
+/* --------------------------------------------------- */
+
+header .drawer-hamburger-icon,
+header .drawer-hamburger-icon:after,
+header .drawer-hamburger-icon:before {
+    background-color: #fff;
+    height: 3px;
+}
+
+.drawer--right.drawer-open .drawer-hamburger {
+    right: 0px;
+}
+
+header .drawer-nav {
+    background: #d3e9ff;
+}
+
+header .drawer-menu-item {
+    color: rgba(0, 44, 126, 0.589);
+    width: 200px;
+    font-size: 16px;
+}
+
+header button:focus {
+    background-color: #80A6C5;
+}
+
+footer {
+    height: 80px;
+}
+
+footer .copyright {
+    color: rgba(0, 44, 126, 0.589);
+    font-size: 12px;
+    padding-top: 30px;
+    letter-spacing: 1px;
+}
+
+#sec1 {
+    background: url(./img/index_pic1.jpg) no-repeat center center;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+    padding: 50px 15px;
+    text-align: left;
+}
+
+#sec1 h3 {
+    font-size: 30px;
+    color: #fff;
+    line-height: 35px;
+    margin: 20px 0 0px 0;
+    font-weight: 200;
+    padding-top: 100px;
+}
+
+#sec2 {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.contents-item {
+    width: calc(100% / 3);
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+.contents-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+}
+
+
+.contents-item p {
+    font-size: 16px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(0, 44, 126);
+}
