@@ -1,4 +1,4 @@
-{% extends 'index_base.html' %}
+{% extends 'scene_base.html' %}
 
 {% block content %}
 
@@ -7,6 +7,8 @@
     <header>
 
         <h3>Bookmark</h3>
+        <p>{{user_info[0]}}さん こんにちは</p>
+        <a href="/logout">ログアウト</a>
         <ul>
             <li><a class="material-icons" href="/">chevron_left</a></li>
         </ul>
