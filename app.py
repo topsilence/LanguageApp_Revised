@@ -169,12 +169,13 @@ def scene_12():
     print(word_info)
     return render_template("scene_12.html", html_word_info = word_info)
 
+
 @app.route('/register',methods=["GET", "POST"])
 def register():
     #  登録ページを表示させる
     if request.method == "GET":
         if 'user_id' in session :
-            return redirect ('/bbs')
+            return redirect ('/bookmark')
         else:
             return render_template("register.html")
 
@@ -184,13 +185,12 @@ def register():
         name = request.form.get("name")
         password = request.form.get("password")
 
-        conn = sqlite3.connect('service.db')
+        conn = sqlite3.connect('scene_words.db')
         c = conn.cursor()
-        # 課題4の答えはここ
-        c.execute("insert into user values(null,?,?,'no_img.png')", (name,password))
+        c.execute("insert into user values(null,?,?)", (name,password))
         conn.commit()
         conn.close()
-        return redirect('/login')
+        return redirect('/bookmark')
 
 
 # GET  /login => ログイン画面を表示
@@ -199,7 +199,7 @@ def register():
 def login():
     if request.method == "GET":
         if 'user_id' in session :
-            return redirect("/bbs")
+            return redirect("/register")
         else:
             return render_template("login.html")
     else:
@@ -209,7 +209,7 @@ def login():
 
         # ブラウザから送られてきた name ,password を userテーブルに一致するレコードが
         # 存在するかを判定する。レコードが存在するとuser_idに整数が代入、存在しなければ nullが入る
-        conn = sqlite3.connect('service.db')
+        conn = sqlite3.connect('scene_words.db')
         c = conn.cursor()
         c.execute("select id from user where name = ? and password = ?", (name, password) )
         user_id = c.fetchone()
@@ -222,7 +222,7 @@ def login():
             return render_template("login.html")
         else:
             session['user_id'] = user_id[0]
-            return redirect("/bbs")
+            return redirect("/bookmark")
 
 
 @app.route("/logout")
@@ -230,6 +230,47 @@ def logout():
     session.pop('user_id',None)
     # ログアウト後はログインページにリダイレクトさせる
     return redirect("/login")
+
+@app.route('/bookmark')
+def bookmark():
+    if 'user_id' in session :
+        user_id = session['user_id']
+        conn = sqlite3.connect('scene_words.db')
+        c = conn.cursor()
+        # # DBにアクセスしてログインしているユーザ名と投稿内容を取得する
+        # クッキーから取得したuser_idを使用してuserテーブルのnameを取得
+        c.execute("select name from user where id = ?", (user_id,))
+        # fetchoneはタプル型
+        user_info = c.fetchone()
+        # user_infoの中身を確認
+        word_info = []
+
+        c.execute("SELECT id, english, japanese, pronunciation from bookmark where user_id = ? ORDER BY id", (user_id,))
+        comment_list = []
+        for row in c.fetchall():
+            word_info.append({"id":row[0],"english":row[1],"japanese":row[2],"pronunciation":row[3]})
+        c.close()
+        print(word_info)
+        return render_template('bookmark.html', user_info = user_info, html_word_info = word_info)
+    else:
+        return redirect("/login")
+
+@app.route('/add', methods=["POST"])
+def add():
+    user_id = session['user_id']
+
+    # POSTアクセスならDBに登録する
+    # フォームから入力されたアイテム名の取得(Python2ならrequest.form.getを使う)
+    id = request.form.get("id")
+    conn = sqlite3.connect('scene_words.db')
+    c = conn.cursor()
+    # 現在の最大ID取得(fetchoneの戻り値はタプル)
+
+    c.execute("insert into bookmark values(?,?,?,?,?)", (id, english, japanese, pronunciation, user_id))
+    conn.commit()
+    conn.close()
+    return redirect('/bookmark')
+
 
 @app.errorhandler(403)
 def mistake403(code):
