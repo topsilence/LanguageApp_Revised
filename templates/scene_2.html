@@ -1,48 +1,46 @@
-{% extends 'scene_base.html' %}
-
-{% block content %}
+{% extends 'scene_base.html' %} {% block content %}
 
 <body>
+  <header>
+    <h3>Shopping</h3>
+    <ul>
+      <li class="left_icon">
+        <a class="material-icons" href="/">chevron_left</a>
+      </li>
+    </ul>
+  </header>
 
-    <header>
+  <article>
+    {% for item in html_word_info %}
 
-        <h3>Shopping</h3>
-        <ul>
-            <li><a class="material-icons" href="/">chevron_left</a></li>
+    <ul class="menu">
+      <li class="menu__item">
+        <a class="menu__item__link js-menu__item__link" href=""
+          >{{item["english"]}}</a
+        >
+        <ul class="submenu">
+          <li class="submenu__item">
+            <input id="btn{{item["id"]}}" type="button" value="talk">
+            <script>
+              var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
+              btn.addEventListener("click", () => { // ボタンがクリックされたら
+                  const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
+                  synth.text = "{{item["japanese"]}}"; // 話す内容
+                  synth.lang = "ja-JP"; // 言語
+                  synth.rate = 0.7; // 速さ
+                  synth.pitch = 1.0; // 高さ
+                  synth.volume = 1.0; // 音量
+                  window.speechSynthesis.speak(synth); // 話す
+              });
+            </script>
+            <p>{{item["japanese"]}}</p>
+            <p>{{item["pronunciation"]}}</p>
+          </li>
         </ul>
-    </header>
-
-    <article>
-        {% for item in html_word_info %}
-
-        <ul class="menu">
-            <li class="menu__item">
-                <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
-                <ul class="submenu">
-                    <li class="submenu__item">
-                        <input id="btn{{item["id"]}}" type="button" value="talk">
-                        <script>
-                            var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
-                            btn.addEventListener("click", () => { // ボタンがクリックされたら
-                                const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
-                                synth.text = "{{item["japanese"]}}"; // 話す内容
-                                synth.lang = "ja-JP"; // 言語
-                                synth.rate = 0.7; // 速さ
-                                synth.pitch = 1.0; // 高さ
-                                synth.volume = 1.0; // 音量
-                                window.speechSynthesis.speak(synth); // 話す
-                            });
-                        </script>
-                        <p>{{item["japanese"]}}</p>
-                        <p>{{item["pronunciation"]}}</p>
-                    </li>
-
-                </ul>
-            </li>
-        </ul>
-        {% endfor %}
-
-    </article>
+      </li>
+    </ul>
+    {% endfor %}
+  </article>
 </body>
 
 {% endblock %}
