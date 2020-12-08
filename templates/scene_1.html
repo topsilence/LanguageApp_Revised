@@ -1,25 +1,29 @@
-{% extends 'scene_base.html' %}
-
-{% block content %}
+{% extends 'scene_base.html' %} {% block content %}
 
 <body>
+  <header>
+    <h3>Greetings</h3>
+    <ul>
+      <li class="left_icon">
+          <a class="back-icon" href="/"><img src="/static/img/back1.png"></a>
+      </li>
+    </ul>
+  </header>
 
-    <header>
+  <article>
+    {% for item in html_word_info %}
 
-        <h3>Greetings</h3>
-        <ul>
-            <li><a class="material-icons" href="/">chevron_left</a></li>
-        </ul>
-    </header>
-
-    <article>
-        {% for item in html_word_info %}
-
-        <ul class="menu">
-            <li class="menu__item">
-                <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
-                <ul class="submenu">
-                    <li class="submenu__item">
+    <ul class="menu">
+      <li class="menu__item">
+        <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
+        <ul class="submenu">
+            <li class="submenu__item">
+                <div class="container">
+                    <div class="item1">
+                        <p>{{item["japanese"]}}</p>
+                        <p>{{item["pronunciation"]}}</p>
+                    </div>
+                    <div class="item2">
                         <input id="btn{{item["id"]}}" type="button" value="talk">
                         <script>
                             var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
@@ -33,20 +37,20 @@
                                 window.speechSynthesis.speak(synth); // 話す
                             });
                         </script>
-                        <p>{{item["japanese"]}}</p>
-                        <p>{{item["pronunciation"]}}</p>
+                    </div>
+                    <div class="item3">
                         <form action="/add" method="post">
-                            <input type="hidden" name="word_id" value="{{item['id']}}">
-                            <input id="{{item["id"]}}" type="button" value="Bookmark">
+                        <input type="hidden" name="{{item['id']}},{{item["english"]}},{{item["japanese"]}},{{item["pronunciation"]}}">
+                        <input class="btn-circle" type="submit" value="★">
                         </form>
-                    </li>
-
-                </ul>
-            </li>
+                    </div>
+                </div>
+          </li>
         </ul>
-        {% endfor %}
-
-    </article>
+      </li>
+    </ul>
+    {% endfor %}
+  </article>
 </body>
 
 {% endblock %}
