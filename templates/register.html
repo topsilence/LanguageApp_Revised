@@ -1,18 +1,78 @@
-{% extends 'index_base.html' %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="サイトをキーワードで説明" />
+    <meta name="description" content="どんなサイトかを短い文章で説明" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,user-scalable=1"
+    />
+    <link rel="stylesheet" type="text/css" href="/static/style_scene.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+    <title>Let's communicate in Japanese</title>
+    <script type="text/javascript" src="/static/jquery-3.5.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/static/jquery.fadethis.min.js"
+    ></script>
+    <!-- drawer.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css"
+    />
+    <!-- jquery & iScroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <!-- drawer.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+    <script type="text/javascript" src="/static/common.js"></script>
+  </head>
 
-{% block content %}
-
-<div>
-
-<form action="/register" method="post">
-  Name：<input type="text" name="name"><br>
-  Password：<input type="password" name="password"><br>
-  <input type="submit" name="save" value="Register">
-</form>
-
-<a href="/login">Click here if you are registered.</a><br>
-<a href="/">Back</a>
-
-</div>
-
-{% endblock %}
+  <body>
+    <section class="login">
+      <div class="login_container">
+        <div class="login_title">Register</div>
+        <div class="login_form">
+          <form action="/register" method="post">
+            <dl class="login_name">
+              <dt class="login_name_title">Name：</dt>
+              <dd class="input-field_wrapper">
+                <input class="input-field" type="text" name="name" required />
+              </dd>
+            </dl>
+            <dl class="login_name">
+              <dt class="login_name_title">Password：</dt>
+              <dd class="input-field_wrapper">
+                <input
+                  class="input-field"
+                  type="password"
+                  name="password"
+                  required
+                />
+              </dd>
+            </dl>
+            <div class="contact_submit">
+              <input
+                class="input_btn"
+                type="submit"
+                name="save"
+                value="Register"
+              />
+            </div>
+            <div class="goback_comment">
+              <a href="/login">Click here if you are registered.</a>
+            </div>
+            <a href="/">Back</a>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
