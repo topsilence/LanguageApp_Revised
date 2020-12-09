@@ -14,3 +14,12 @@ $(function(){
 $(document).ready(function() {
     $('.drawer').drawer();
 });
+
+// お気に入りボタン機能
+
+$(function(){
+    $('.btn-circle').on('click', function(event){
+        event.preventDefault();
+        $(this).toggleClass('active');
+    });
+});

@@ -201,13 +201,18 @@ header h3 {
     padding-top: 20px;
 }
 
-article{
+article {
     margin-top: 84px;
 }
 
-.material-icons {
+.back-icon {
     color: white;
     padding-left: 10px;
+}
+
+.back-icon img {
+    height: 20px;
+    width: 20px;
 }
 
 .menu__item {
@@ -225,6 +230,7 @@ article{
     display: block;
     padding: 18px;
     font-size: 20px;
+    text-decoration: none;
 }
 
 .submenu {
@@ -253,12 +259,13 @@ p {
 
 }
 
-.user_name{
+
+.user_name {
     margin-top: 16px;
     color: #fff;
 }
 
-.logout{
+.logout {
     color: #fff;
     position: fixed;
     top: 24px;
@@ -267,41 +274,41 @@ p {
     flex-direction: column;
 }
 
-#logout_icon{
+#logout_icon {
     margin-bottom: 8px;
     color: #fff;
 }
 
-.logout a{
+.logout a {
     color: #fff;
 }
 
-.left_icon{
+.left_icon {
     text-align: left;
 }
 
-body{
+body {
     background-color: #d3e9ff;
 }
 
-.login{
+.login {
     width: 100%;
 }
 
-.login_container{
+.login_container {
     margin: 48px auto 0;
     width: 1000px;
     max-width: 100%;
     text-align: center;
 }
 
-.login_title{
+.login_title {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 72px;
 }
 
-.login_name{
+.login_name {
     display: flex;
     font-size: 16px;
     width: 100%;
@@ -310,18 +317,18 @@ body{
 
 }
 
-.login_name_title{
+.login_name_title {
     width: 30%;
     padding-bottom: 16px;
 }
 
-.input-field_wrapper{
+.input-field_wrapper {
     width: 70%;
     text-align: left;
     margin-bottom: 24px;
 }
 
-.input-field{
+.input-field {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
@@ -334,15 +341,15 @@ body{
     font-size: 1em;
     padding: 0.4em 0.8em;
     width: 80%;
-  }
-  
-  .input-field:focus {
+}
+
+.input-field:focus {
     border: 1px solid rgba(0, 0, 0, 0.32);
     box-shadow: none;
     outline: none;
-  }
+}
 
-  .input_btn{
+.input_btn {
     -webkit-appearance: none;
     background: #E1FF57 url(../img/icon-arrow-right.png) no-repeat center right 12px / 17px 16px;
     box-shadow: 0 3px 6px rgba(#000, 0.16);
@@ -362,10 +369,52 @@ body{
     line-height: 1.6;
 }
 
-.contact_submit{
+.contact_submit {
     margin-bottom: 24px;
 }
 
-.goback_comment{
+.goback_comment {
     margin-bottom: 24px;
+}
+
+.btn-circle {
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+    background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+    transition: .4s;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 16px;
+    margin-top: 6px;
+
+}
+
+.btn-circle:hover {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+
+}
+
+.btn-circle:focus {
+    outline: none;
+}
+
+.active {
+    background-image: linear-gradient(45deg, #709dff 0%, #2e1fff 100%);
+}
+
+.container {
+    display: flex;
+}
+
+.item3 {
+    margin-left: auto;
 }
