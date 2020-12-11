@@ -3,9 +3,14 @@
 <body>
   <header>
     <h3>Greetings</h3>
+    <div class="like">
+      <a href="/bookmark">
+        <i id="like_icon" class="fas fa-heart fa-2x"></i>
+      </a>
+    </div>
     <ul>
       <li class="left_icon">
-          <a class="back-icon" href="/"><img src="/static/img/back1.png"></a>
+        <a class="back-icon" href="/"><img src="/static/img/back1.png" /></a>
       </li>
     </ul>
   </header>
@@ -15,36 +20,39 @@
 
     <ul class="menu">
       <li class="menu__item">
-        <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
+        <a class="menu__item__link js-menu__item__link" href=""
+          >{{item["english"]}}</a
+        >
         <ul class="submenu">
-            <li class="submenu__item">
-                <div class="container">
-                    <div class="item1">
-                        <p>{{item["japanese"]}}</p>
-                        <p>{{item["pronunciation"]}}</p>
-                    </div>
-                    <div class="item2">
-                        <input id="btn{{item["id"]}}" type="button" value="talk">
-                        <script>
-                            var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
-                            btn.addEventListener("click", () => { // ボタンがクリックされたら
-                                const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
-                                synth.text = "{{item["japanese"]}}"; // 話す内容
-                                synth.lang = "ja-JP"; // 言語
-                                synth.rate = 0.7; // 速さ
-                                synth.pitch = 1.0; // 高さ
-                                synth.volume = 1.0; // 音量
-                                window.speechSynthesis.speak(synth); // 話す
-                            });
-                        </script>
-                    </div>
-                    <div class="item3">
-                        <form action="/add" method="post">
-                        <input type="hidden" name="{{item['id']}},{{item["english"]}},{{item["japanese"]}},{{item["pronunciation"]}}">
-                        <input class="btn-circle" type="submit" value="★">
-                        </form>
-                    </div>
-                </div>
+          <li class="submenu__item">
+            <div class="container">
+              <div class="item1">
+                <p>{{item["japanese"]}}</p>
+                <p>{{item["pronunciation"]}}</p>
+              </div>
+              <div class="item2">
+                <input id="btn{{item["id"]}}" type="button" value="talk">
+                <script>
+                  var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
+                  btn.addEventListener("click", () => { // ボタンがクリックされたら
+                      const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
+                      synth.text = "{{item["japanese"]}}"; // 話す内容
+                      synth.lang = "ja-JP"; // 言語
+                      synth.rate = 0.7; // 速さ
+                      synth.pitch = 1.0; // 高さ
+                      synth.volume = 1.0; // 音量
+                      window.speechSynthesis.speak(synth); // 話す
+                  });
+                </script>
+              </div>
+              <div class="item3">
+                <form action="/add" method="post">
+                  <input type="hidden"
+                  name="{{item['id']}},{{item["english"]}},{{item["japanese"]}},{{item["pronunciation"]}}">
+                  <input class="btn-circle" type="submit" value="★" />
+                </form>
+              </div>
+            </div>
           </li>
         </ul>
       </li>

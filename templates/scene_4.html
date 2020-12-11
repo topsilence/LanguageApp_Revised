@@ -3,9 +3,14 @@
 <body>
   <header>
     <h3>Directions</h3>
+    <div class="like">
+      <a href="/bookmark">
+        <i id="like_icon" class="fas fa-heart fa-2x"></i>
+      </a>
+    </div>
     <ul>
       <li class="left_icon">
-        <a class="back-icon" href="/"><img src="/static/img/back1.png"></a>
+        <a class="back-icon" href="/"><img src="/static/img/back1.png" /></a>
       </li>
     </ul>
   </header>
@@ -15,7 +20,9 @@
 
     <ul class="menu">
       <li class="menu__item">
-        <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
+        <a class="menu__item__link js-menu__item__link" href=""
+          >{{item["english"]}}</a
+        >
         <ul class="submenu">
           <li class="submenu__item">
             <input id="btn{{item["id"]}}" type="button" value="talk">

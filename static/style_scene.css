@@ -268,10 +268,27 @@ p {
 .logout {
     color: #fff;
     position: fixed;
-    top: 24px;
-    right: 36px;
+    top: 72px;
+    right: 12px;
     display: flex;
     flex-direction: column;
+}
+
+.like{
+    color: #fff;
+    position: fixed;
+    top: 40px;
+    right: 16px;
+}
+
+.like_emergeny{
+    position: fixed;
+    top: 68px;
+    right: 16px;
+}
+
+#like_icon{
+    color: #fff;
 }
 
 #logout_icon {
