@@ -22,26 +22,39 @@
 
     <ul class="menu">
       <li class="menu__item">
-        <a class="menu__item__link js-menu__item__link" href=""
-          >{{item["english"]}}</a
-        >
+        <a class="menu__item__link js-menu__item__link" href="">{{item["english"]}}</a>
         <ul class="submenu">
           <li class="submenu__item">
-            <input id="btn{{item["id"]}}" type="button" value="talk">
-            <script>
-              var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
-              btn.addEventListener("click", () => { // ボタンがクリックされたら
-                  const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
-                  synth.text = "{{item["japanese"]}}"; // 話す内容
-                  synth.lang = "ja-JP"; // 言語
-                  synth.rate = 0.7; // 速さ
-                  synth.pitch = 1.0; // 高さ
-                  synth.volume = 1.0; // 音量
-                  window.speechSynthesis.speak(synth); // 話す
-              });
-            </script>
-            <p>{{item["japanese"]}}</p>
-            <p>{{item["pronunciation"]}}</p>
+            <div class="container">
+              <div class="item1">
+                <p>{{item["japanese"]}}</p>
+                <p>{{item["pronunciation"]}}</p>
+              </div>
+              <div class="item2">
+                <input id="btn{{item["id"]}}" type="button" value="talk">
+                <script>
+                  var btn = document.getElementById("btn{{item["id"]}}"); // ボタンの取得
+                  btn.addEventListener("click", () => { // ボタンがクリックされたら
+                      const synth = new SpeechSynthesisUtterance(); // 設定を入れるオブジェクト
+                      synth.text = "{{item["japanese"]}}"; // 話す内容
+                      synth.lang = "ja-JP"; // 言語
+                      synth.rate = 0.8; // 速さ
+                      synth.pitch = 1.0; // 高さ
+                      synth.volume = 1.0; // 音量
+                      window.speechSynthesis.speak(synth); // 話す
+                  });
+                </script>
+              </div>
+              <div class="item3">
+                <form action="/del" method="post">
+                  <input type="hidden" name="id" value="{{item["id"]}}">
+                  <input type="hidden" name="english" value="{{item["english"]}}">
+                  <input type="hidden" name="japanese" value="{{item["japanese"]}}">
+                  <input type="hidden" name="pronunciation" value="{{item["pronunciation"]}}">
+                  <input class="btn-circle" type="submit" value="★">
+                </form>
+              </div>
+            </div>
           </li>
         </ul>
       </li>

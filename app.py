@@ -285,6 +285,20 @@ def add():
     else:
         return redirect("/login")
 
+@app.route('/del' , methods=["POST"])
+def del_word():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        id = request.form.get("id")
+        id = int(id)
+        conn = sqlite3.connect('scene_words.db')
+        c = conn.cursor()
+        c.execute("delete from bookmark where id = ?", (id,))
+        conn.commit()
+        conn.close()
+        # 処理終了後に一覧画面に戻す
+        return redirect("/bookmark")
+
 @app.route('/bookmark')
 def bookmark():
     if 'user_id' in session:
