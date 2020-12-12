@@ -17,9 +17,17 @@ $(document).ready(function() {
 
 // お気に入りボタン機能
 
-$(function(){
-    $('.btn-circle').on('click', function(event){
-        event.preventDefault();
-        $(this).toggleClass('active');
-    });
-});
+// $(function(){
+//     $('.btn-circle').on('click', function(event){
+//         event.preventDefault();
+//         $(this).toggleClass('active');
+//     });
+// });
+
+// $(function(){
+
+//     $(document).on('click', '.btn-circle', function(event){
+//         event.preventDefault();
+//         $(this).toggleClass('active');
+//     });
+// });

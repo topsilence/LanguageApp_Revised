@@ -274,20 +274,20 @@ p {
     flex-direction: column;
 }
 
-.like{
+.like {
     color: #fff;
     position: fixed;
     top: 40px;
     right: 16px;
 }
 
-.like_emergeny{
+.like_emergeny {
     position: fixed;
     top: 68px;
     right: 16px;
 }
 
-#like_icon{
+#like_icon {
     color: #fff;
 }
 
