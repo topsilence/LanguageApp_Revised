@@ -232,7 +232,7 @@ def register():
 def login():
     if request.method == "GET":
         if 'user_id' in session:
-            return redirect("/register")
+            return redirect("/bookmark")
         else:
             return render_template("login.html")
     else:

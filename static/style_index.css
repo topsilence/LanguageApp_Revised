@@ -74,6 +74,7 @@ header .drawer-menu-item {
     color: rgba(0, 44, 126, 0.589);
     width: 200px;
     font-size: 16px;
+    padding-top: 30px;
 }
 
 header button:focus {
