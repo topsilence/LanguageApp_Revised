@@ -39,7 +39,7 @@ li {
 
 a {
     outline: none;
-    color: inherit;
+    color: rgb(0, 44, 126);
     text-decoration: none;
 }
 
@@ -102,12 +102,18 @@ footer .copyright {
 }
 
 #sec1 h3 {
-    font-size: 30px;
+    font-size: 26px;
     color: #fff;
     line-height: 35px;
     margin: 20px 0 0px 0;
-    font-weight: 200;
+    font-weight: 400;
     padding-top: 100px;
+}
+
+#sec1 h2 {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 200;
 }
 
 #sec2 {
@@ -137,4 +143,92 @@ footer .copyright {
     padding-left: 10px;
     padding-right: 10px;
     color: rgb(0, 44, 126);
+}
+
+.login {
+    width: 100%;
+}
+
+.login_container {
+    margin: 48px auto 0;
+    width: 1000px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.login_title {
+    color: rgb(0, 44, 126);
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 72px;
+}
+
+.login_name {
+    color: rgb(0, 44, 126);
+    display: flex;
+    font-size: 16px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+
+}
+
+.login_name_title {
+    width: 30%;
+    padding-bottom: 16px;
+}
+
+.input-field_wrapper {
+    width: 70%;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.input-field {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    color: inherit;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 0.4em 0.8em;
+    width: 80%;
+}
+
+.input-field:focus {
+    border: 1px solid rgba(0, 0, 0, 0.32);
+    box-shadow: none;
+    outline: none;
+}
+
+.input_btn {
+    -webkit-appearance: none;
+    background: #E1FF57 url(../img/icon-arrow-right.png) no-repeat center right 12px / 17px 16px;
+    box-shadow: 0 3px 6px rgba(#000, 0.16);
+    text-align: center;
+    border: none;
+    color: rgb(0, 44, 126);
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 60px;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s ease 0s;
+    width: 304px;
+    max-width: 100%;
+    line-height: 1.6;
+}
+
+.contact_submit {
+    margin-bottom: 24px;
+}
+
+.goback_comment {
+    margin-bottom: 24px;
 }
