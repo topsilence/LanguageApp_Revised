@@ -17,9 +17,6 @@ $(document).ready(function() {
 
 // お気に入りボタン機能
 
-$(function(){
-    $('.btn-circle').on('click', function(event){
-        event.preventDefault();
-        $(this).toggleClass('active');
-    });
+$(document).on('click', '.btn-circle', function(){
+    $(this).toggleClass('active');
 });

@@ -194,23 +194,24 @@ header {
 }
 
 header h3 {
-    width: fit-content;
     color: white;
-    margin: 0 auto;
     font-size: 24px;
     padding-top: 20px;
 }
+
 
 article {
     margin-top: 84px;
 }
 
-.back-icon {
-    color: white;
-    padding-left: 10px;
+.back_icon {
+    color: #fff;
+    position: fixed;
+    top: 50px;
+    left: 16px;
 }
 
-.back-icon img {
+.back_icon a img {
     height: 20px;
     width: 20px;
 }
@@ -251,43 +252,35 @@ p {
     padding: 5px;
 }
 
-.emergency {
-    text-align: center;
-    padding-top: 5px;
+h3.title_exception {
+    padding-top: 14px;
+    font-size: 24px;
     color: white;
-
-
 }
 
-
-.user_name {
-    margin-top: 16px;
-    color: #fff;
+p.sub_title {
+    padding: 5px;
+    color: white;
+    font-size: 15px;
 }
 
 .logout {
     color: #fff;
     position: fixed;
-    top: 72px;
+    top: 30px;
     right: 12px;
     display: flex;
     flex-direction: column;
 }
 
-.like{
+.like {
     color: #fff;
     position: fixed;
     top: 40px;
     right: 16px;
 }
 
-.like_emergeny{
-    position: fixed;
-    top: 68px;
-    right: 16px;
-}
-
-#like_icon{
+#like_icon {
     color: #fff;
 }
 
@@ -298,10 +291,6 @@ p {
 
 .logout a {
     color: #fff;
-}
-
-.left_icon {
-    text-align: left;
 }
 
 body {
@@ -434,4 +423,22 @@ body {
 
 .item3 {
     margin-left: auto;
+}
+
+.header_container {
+    display: flex;
+    height: 76px;
+    justify-content: space-around;
+}
+
+.title1 {
+    order: 2;
+}
+
+.title2 {
+    order: 3;
+}
+
+.title {
+    order: 1;
 }

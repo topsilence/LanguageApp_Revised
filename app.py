@@ -232,7 +232,7 @@ def register():
 def login():
     if request.method == "GET":
         if 'user_id' in session:
-            return redirect("/register")
+            return redirect("/bookmark")
         else:
             return render_template("login.html")
     else:
@@ -265,6 +265,39 @@ def logout():
     # ログアウト後はログインページにリダイレクトさせる
     return redirect("/login")
 
+@app.route("/add", methods=["POST"])
+def add():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        id = request.form.get("id")
+        id = int(id)
+        english = request.form.get("english")
+        japanese = request.form.get("japanese")
+        pronunciation = request.form.get("pronunciation")
+        conn = sqlite3.connect('scene_words.db')
+        c = conn.cursor()
+        
+        c.execute("insert into bookmark values(?,?,?,?,?)", (id, english, japanese, pronunciation, user_id))
+        conn.commit()
+        conn.close()
+
+        return redirect('/bookmark')
+    else:
+        return redirect("/login")
+
+@app.route('/del' , methods=["POST"])
+def del_word():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        id = request.form.get("id")
+        id = int(id)
+        conn = sqlite3.connect('scene_words.db')
+        c = conn.cursor()
+        c.execute("delete from bookmark where id = ?", (id,))
+        conn.commit()
+        conn.close()
+        # 処理終了後に一覧画面に戻す
+        return redirect("/bookmark")
 
 @app.route('/bookmark')
 def bookmark():
@@ -291,28 +324,6 @@ def bookmark():
         return render_template('bookmark.html', user_info=user_info, html_word_info=word_info)
     else:
         return redirect("/login")
-
-
-@app.route('/add', methods=["POST"])
-def add():
-    user_id = session['user_id']
-
-    # POSTアクセスならDBに登録する
-    # フォームから入力されたアイテム名の取得(Python2ならrequest.form.getを使う)
-    id = request.form.get("id")
-    english = request.form.get("english")
-    japanese = request.form.get("japanese")
-    pronunciation = request.form.get("pronunciation")
-    conn = sqlite3.connect('scene_words.db')
-
-    c = conn.cursor()
-    # 現在の最大ID取得(fetchoneの戻り値はタプル)
-
-    c.execute("insert into bookmark values(?,?,?,?,?)",
-              (id, english, japanese, pronunciation, user_id))
-    conn.commit()
-    conn.close()
-    return redirect('/bookmark')
 
 
 @app.errorhandler(403)
