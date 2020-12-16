@@ -203,6 +203,54 @@ def scene_12():
     return render_template("scene_12.html", html_word_info=word_info)
 
 
+@app.route("/scene_13")
+def scene_13():
+    # flasktest.dbに接続します
+    conn = sqlite3.connect("scene_words.db")
+    c = conn.cursor()
+    word_info = []
+    c.execute(
+        'SELECT id, english, japanese, pronunciation from fruits_vegetables ORDER BY id')
+    for row in c.fetchall():
+        word_info.append(
+            {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
+    c.close()
+    print(word_info)
+    return render_template("scene_13.html", html_word_info=word_info)
+
+
+@app.route("/scene_14")
+def scene_14():
+    # flasktest.dbに接続します
+    conn = sqlite3.connect("scene_words.db")
+    c = conn.cursor()
+    word_info = []
+    c.execute(
+        'SELECT id, english, japanese, pronunciation from sightseeing ORDER BY id')
+    for row in c.fetchall():
+        word_info.append(
+            {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
+    c.close()
+    print(word_info)
+    return render_template("scene_14.html", html_word_info=word_info)
+
+
+@app.route("/scene_15")
+def scene_15():
+    # flasktest.dbに接続します
+    conn = sqlite3.connect("scene_words.db")
+    c = conn.cursor()
+    word_info = []
+    c.execute(
+        'SELECT id, english, japanese, pronunciation from accommodation ORDER BY id')
+    for row in c.fetchall():
+        word_info.append(
+            {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
+    c.close()
+    print(word_info)
+    return render_template("scene_15.html", html_word_info=word_info)
+
+
 @app.route('/register', methods=["GET", "POST"])
 def register():
     #  登録ページを表示させる
@@ -276,7 +324,6 @@ def add():
         pronunciation = request.form.get("pronunciation")
         conn = sqlite3.connect('scene_words.db')
         c = conn.cursor()
-        
         c.execute("insert into bookmark values(?,?,?,?,?)", (id, english, japanese, pronunciation, user_id))
         conn.commit()
         conn.close()
