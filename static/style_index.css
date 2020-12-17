@@ -108,12 +108,14 @@ footer .copyright {
     margin: 20px 0 0px 0;
     font-weight: 400;
     padding-top: 100px;
+    padding-left: 2%;
 }
 
 #sec1 h2 {
     font-size: 20px;
     color: #fff;
     font-weight: 200;
+    padding-left: 2%;
 }
 
 #sec2 {
@@ -231,4 +233,13 @@ footer .copyright {
 
 .goback_comment {
     margin-bottom: 24px;
+}
+
+.level p {
+    text-align: left;
+    padding-left: 5%;
+    padding-top: 20px;
+    color: rgb(0, 44, 126);
+    border-bottom: ridge 1px rgb(0, 44, 126);
+    margin-right: 30%;
 }

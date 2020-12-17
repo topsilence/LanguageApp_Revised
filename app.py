@@ -117,7 +117,7 @@ def scene_7():
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
     word_info = []
-    c.execute('SELECT id, english, japanese, pronunciation from numbers ORDER BY id')
+    c.execute('SELECT id, english, japanese, pronunciation from accommodation ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -133,7 +133,7 @@ def scene_8():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from time_date ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from sightseeing ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -163,7 +163,7 @@ def scene_10():
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
     word_info = []
-    c.execute('SELECT id, english, japanese, pronunciation from colors ORDER BY id')
+    c.execute('SELECT id, english, japanese, pronunciation from numbers ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -178,7 +178,7 @@ def scene_11():
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
     word_info = []
-    c.execute('SELECT id, english, japanese, pronunciation from places ORDER BY id')
+    c.execute('SELECT id, english, japanese, pronunciation from time_date ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -194,7 +194,7 @@ def scene_12():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from foods_drinks ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from places ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -210,7 +210,7 @@ def scene_13():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from fruits_vegetables ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from foods_drinks ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -226,7 +226,7 @@ def scene_14():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from sightseeing ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from fruits_vegetables ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -242,7 +242,7 @@ def scene_15():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from accommodation ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from colors ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
