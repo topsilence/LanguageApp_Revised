@@ -265,12 +265,23 @@ def register():
         # 登録ページで登録ボタンを押した時に走る処理
         name = request.form.get("name")
         password = request.form.get("password")
-
         conn = sqlite3.connect('scene_words.db')
         c = conn.cursor()
         c.execute("insert into user values(null,?,?)", (name, password))
         conn.commit()
+
+        name = request.form.get("name")
+        password = request.form.get("password")
+        conn = sqlite3.connect('scene_words.db')
+        c = conn.cursor()
+        c.execute(
+            "select id from user where name = ? and password = ?", (name, password))
+        user_id = c.fetchone()
         conn.close()
+        # DBから取得してきたuser_id、ここの時点ではタプル型
+        print(type(user_id))
+        session['user_id'] = user_id[0]
+
         return redirect('/bookmark')
 
 
@@ -361,7 +372,7 @@ def bookmark():
         word_info = []
 
         c.execute(
-            "SELECT id, english, japanese, pronunciation from bookmark where user_id = ? ORDER BY id", (user_id,))
+            "SELECT id, english, japanese, pronunciation from bookmark where user_id = ?", (user_id,))
         comment_list = []
         for row in c.fetchall():
             word_info.append(
