@@ -117,7 +117,7 @@ def scene_7():
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
     word_info = []
-    c.execute('SELECT id, english, japanese, pronunciation from numbers ORDER BY id')
+    c.execute('SELECT id, english, japanese, pronunciation from accommodation ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -133,7 +133,7 @@ def scene_8():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from time_date ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from sightseeing ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -163,7 +163,7 @@ def scene_10():
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
     word_info = []
-    c.execute('SELECT id, english, japanese, pronunciation from colors ORDER BY id')
+    c.execute('SELECT id, english, japanese, pronunciation from numbers ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -178,7 +178,7 @@ def scene_11():
     conn = sqlite3.connect("scene_words.db")
     c = conn.cursor()
     word_info = []
-    c.execute('SELECT id, english, japanese, pronunciation from places ORDER BY id')
+    c.execute('SELECT id, english, japanese, pronunciation from time_date ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
@@ -194,13 +194,61 @@ def scene_12():
     c = conn.cursor()
     word_info = []
     c.execute(
-        'SELECT id, english, japanese, pronunciation from foods_drinks ORDER BY id')
+        'SELECT id, english, japanese, pronunciation from places ORDER BY id')
     for row in c.fetchall():
         word_info.append(
             {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
     c.close()
     print(word_info)
     return render_template("scene_12.html", html_word_info=word_info)
+
+
+@app.route("/scene_13")
+def scene_13():
+    # flasktest.dbに接続します
+    conn = sqlite3.connect("scene_words.db")
+    c = conn.cursor()
+    word_info = []
+    c.execute(
+        'SELECT id, english, japanese, pronunciation from foods_drinks ORDER BY id')
+    for row in c.fetchall():
+        word_info.append(
+            {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
+    c.close()
+    print(word_info)
+    return render_template("scene_13.html", html_word_info=word_info)
+
+
+@app.route("/scene_14")
+def scene_14():
+    # flasktest.dbに接続します
+    conn = sqlite3.connect("scene_words.db")
+    c = conn.cursor()
+    word_info = []
+    c.execute(
+        'SELECT id, english, japanese, pronunciation from fruits_vegetables ORDER BY id')
+    for row in c.fetchall():
+        word_info.append(
+            {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
+    c.close()
+    print(word_info)
+    return render_template("scene_14.html", html_word_info=word_info)
+
+
+@app.route("/scene_15")
+def scene_15():
+    # flasktest.dbに接続します
+    conn = sqlite3.connect("scene_words.db")
+    c = conn.cursor()
+    word_info = []
+    c.execute(
+        'SELECT id, english, japanese, pronunciation from colors ORDER BY id')
+    for row in c.fetchall():
+        word_info.append(
+            {"id": row[0], "english": row[1], "japanese": row[2], "pronunciation": row[3]})
+    c.close()
+    print(word_info)
+    return render_template("scene_15.html", html_word_info=word_info)
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -217,12 +265,23 @@ def register():
         # 登録ページで登録ボタンを押した時に走る処理
         name = request.form.get("name")
         password = request.form.get("password")
-
         conn = sqlite3.connect('scene_words.db')
         c = conn.cursor()
         c.execute("insert into user values(null,?,?)", (name, password))
         conn.commit()
+
+        name = request.form.get("name")
+        password = request.form.get("password")
+        conn = sqlite3.connect('scene_words.db')
+        c = conn.cursor()
+        c.execute(
+            "select id from user where name = ? and password = ?", (name, password))
+        user_id = c.fetchone()
         conn.close()
+        # DBから取得してきたuser_id、ここの時点ではタプル型
+        print(type(user_id))
+        session['user_id'] = user_id[0]
+
         return redirect('/bookmark')
 
 
@@ -276,7 +335,6 @@ def add():
         pronunciation = request.form.get("pronunciation")
         conn = sqlite3.connect('scene_words.db')
         c = conn.cursor()
-        
         c.execute("insert into bookmark values(?,?,?,?,?)", (id, english, japanese, pronunciation, user_id))
         conn.commit()
         conn.close()
@@ -314,7 +372,7 @@ def bookmark():
         word_info = []
 
         c.execute(
-            "SELECT id, english, japanese, pronunciation from bookmark where user_id = ? ORDER BY id", (user_id,))
+            "SELECT id, english, japanese, pronunciation from bookmark where user_id = ?", (user_id,))
         comment_list = []
         for row in c.fetchall():
             word_info.append(
